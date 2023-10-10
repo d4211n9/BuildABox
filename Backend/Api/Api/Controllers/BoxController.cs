@@ -14,7 +14,7 @@ public class BoxController
     }
 
     [HttpPost]
-    [Route("/createBox")]
+    [Route("/api/createBox")]
     public Box CreateBox([FromBody] Box box)
     {
         Validator.ValidateObject(box, new ValidationContext(box));
@@ -23,7 +23,7 @@ public class BoxController
     }
 
     [HttpGet]
-    [Route("/products")]
+    [Route("/api/products")]
     public IEnumerable<Box> GetAllProducts()
     {
         IEnumerable<Box> boxes = _service.GetAllProducts();
@@ -32,7 +32,7 @@ public class BoxController
     }
 
     [HttpGet]
-    [Route("/products/{productID}")]
+    [Route("/api/products/{productID}")]
     public Box GetProductById([FromRoute] int productID)
     {
         return _service.GetBoxById(productID);

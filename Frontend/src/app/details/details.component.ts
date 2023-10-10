@@ -30,7 +30,7 @@ export class DetailsComponent {
   async getBoxById() {
     const map = await firstValueFrom(this.route.paramMap)
     const id = map.get('id')
-    const call = this.http.get<Box>("http://localhost:5000/products/" + id);
+    const call = this.http.get<Box>("http://localhost:5000/api/products/" + id);
     this.box = await firstValueFrom<Box>(call);
     this.dataService.currentBox = this.box;
   }
