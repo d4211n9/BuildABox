@@ -24,9 +24,6 @@ if (builder.Environment.IsProduction())
 builder.Services.AddSingleton<Repository>();
 builder.Services.AddSingleton<Service.Service>();
 
-var frontEndRelativePath = "../../../Frontend/www";
-builder.Services.AddSpaStaticFiles(conf => conf.RootPath = frontEndRelativePath);
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,12 +43,6 @@ app.UseCors(options =>
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials();
-});
-
-app.UseSpaStaticFiles();
-app.UseSpa(conf =>
-{
-    conf.Options.SourcePath = frontEndRelativePath;
 });
 
 app.Run();
